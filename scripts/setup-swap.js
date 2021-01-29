@@ -8,6 +8,12 @@ async function main() {
     await erc20.deployed();
     console.log("ERC20: ", erc20.address);
 
+    // Deploy SwapFactory
+    const SimpleSwapFactory = await hre.ethers.getContractFactory("SimpleSwapFactory");
+    var simpleSwapFactory = await SimpleSwapFactory.deploy(erc20.address);
+    await simpleSwapFactory.deployed();
+    console.log("SimpleSwapFactory: ", simpleSwapFactory.address);
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere
