@@ -33,7 +33,6 @@ async function main() {
     var logs = await ethers.provider.getLogs({address: simpleSwapFactory.address});
     var BobSwapAddress = swapFactoryInterface.parseLog(logs[0]).args.contractAddress
 
-    // TODO Setup node to work against for persistence
     console.log("Alice address:", aliceAddress);
     console.log("Bob address:", bobAddress);
     console.log("AliceSwapAddress:", AliceSwapAddress)
