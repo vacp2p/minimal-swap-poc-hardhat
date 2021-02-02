@@ -15,8 +15,12 @@ For scripts there is a script to setup SWAP contracts. To run it and make it per
 # Run a node
 npx hardhat node
 
-# Run script to setup SWAP contracts
-npx hardhat run scripts/setup-swap.js
+# Run script to setup SWAP contracts on local hardhat node
+npx hardhat run scripts/setup-swap.js --network localhost
 ```
 
-Which will return you a list a list of addresses for ERC20, Alice, Bob, and their respective SWAP contracts.
+Which will return you a list a list of addresses for ERC20, Alice, Bob, and their respective SWAP contracts. You can then interact with it by running a console:
+
+``` sh
+npx hardhat console --network localhost
+```
