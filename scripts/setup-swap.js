@@ -45,6 +45,10 @@ async function main() {
     var aliceBalance = (await erc20contract.balanceOf(aliceAddress)).toNumber();
     var bobBalance = (await erc20contract.balanceOf(bobAddress)).toNumber();
 
+    // Transfer money to Alice Swap address
+    await erc20contract.transfer(aliceSwapAddress, 5000);
+    var aliceSwapBalance = (await erc20contract.balanceOf(aliceSwapAddress)).toNumber();
+
     // Print stuff
     console.log("ERC20:", erc20.address);
     console.log("SimpleSwapFactory:", simpleSwapFactory.address);
@@ -54,6 +58,7 @@ async function main() {
     console.log("BobSwapAddress:", BobSwapAddress)
     console.log("Alice ERC20 balance:", aliceBalance);
     console.log("Bob ERC20 balance:", bobBalance);
+    console.log("Alice Swap balance:", aliceSwapBalance);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
