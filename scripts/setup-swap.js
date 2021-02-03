@@ -26,12 +26,12 @@ async function main() {
     // Deploy Alice Swap and get address
     var resp = await simpleSwapFactory.deploySimpleSwap(aliceAddress, DEFAULT_HARDDEPOSIT_DECREASE_TIMEOUT)
     var logs = await ethers.provider.getLogs({address: simpleSwapFactory.address});
-    var AliceSwapAddress = swapFactoryInterface.parseLog(logs[0]).args.contractAddress;
+    var aliceSwapAddress = swapFactoryInterface.parseLog(logs[0]).args.contractAddress;
 
     // Deploy Bob Swap and get address
     var resp = await simpleSwapFactory.deploySimpleSwap(bobAddress, DEFAULT_HARDDEPOSIT_DECREASE_TIMEOUT)
     var logs = await ethers.provider.getLogs({address: simpleSwapFactory.address});
-    var BobSwapAddress = swapFactoryInterface.parseLog(logs[0]).args.contractAddress;
+    var bobSwapAddress = swapFactoryInterface.parseLog(logs[0]).args.contractAddress;
 
     // Mint ERC20 tokens
     // Alice is default account so issuer, which means she can mint tokens
@@ -54,8 +54,8 @@ async function main() {
     console.log("SimpleSwapFactory:", simpleSwapFactory.address);
     console.log("Alice address:", aliceAddress);
     console.log("Bob address:", bobAddress);
-    console.log("AliceSwapAddress:", AliceSwapAddress)
-    console.log("BobSwapAddress:", BobSwapAddress)
+    console.log("AliceSwapAddress:", aliceSwapAddress)
+    console.log("BobSwapAddress:", bobSwapAddress)
     console.log("Alice ERC20 balance:", aliceBalance);
     console.log("Bob ERC20 balance:", bobBalance);
     console.log("Alice Swap balance:", aliceSwapBalance);
