@@ -1,6 +1,7 @@
+// Example code to test EIP712 library
+
 const hre = require("hardhat");
 const eip712 = require("ethers-eip712");
-
 
 async function main() {
     const typedData = {
