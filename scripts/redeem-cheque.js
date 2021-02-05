@@ -20,12 +20,12 @@ var aliceAddress = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
 var bobAddress = "0x70997970C51812dc3A010C7d01b50e0d17dc79C8";
 
 // XXX These change
-var erc20address = "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853";
+//var erc20address = "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853";
 var aliceSwapAddress = "0x94099942864EA81cCF197E9D71ac53310b1468D8";
-
 
 // XXX Hardcoded return from sign-cheque script of cheque from Alice to Bob:
 var issuerSig = "0x67c0c9ec1e72e90ebf0155b10953ec81b1ff5bca6283e51bee9bb55ec2fa14876278e88e8f0a34570bed0f9bed4cec9c576dc0ac34512adddbfd157b5be5df091c";
+
 // TODO This should be parameterized with arguments, so probably as a task or standalone script?
 async function main() {
     var recipient = bobAddress;

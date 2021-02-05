@@ -24,3 +24,21 @@ Which will return you a list a list of addresses for ERC20, Alice, Bob, and thei
 ``` sh
 npx hardhat console --network localhost
 ```
+
+After setting up basic SWAP contracts, we can issue and redeem a cheque.
+
+TODO: Turn copy-pasting into CLI arguments or automate it
+
+1. Copy paste the aliceSwapAddress into `sign-cheque.js` script. Then run:
+
+``` sh
+npx hardhat run scripts/sign-cheque.js --network localhost
+```
+
+2. Copy paste resulting signature and aliceSwapAddress into `redeem-cheque.js`, and run:
+
+``` sh
+npx hardhat run scripts/redeem-cheque.js --network localhost
+```
+
+Now Alice has send a cheque to Bob, and Bob has received it from the Swap contract. Cheques can be sent and received off-chain, and only settled once Bob wants to.
