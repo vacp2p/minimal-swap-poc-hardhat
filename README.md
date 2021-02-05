@@ -42,3 +42,7 @@ npx hardhat run scripts/redeem-cheque.js --network localhost
 ```
 
 Now Alice has send a cheque to Bob, and Bob has received it from the Swap contract. Cheques can be sent and received off-chain, and only settled once Bob wants to.
+
+## Example task
+
+`npx hardhat balance --account 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266`
