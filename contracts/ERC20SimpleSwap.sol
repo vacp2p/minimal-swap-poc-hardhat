@@ -4,8 +4,6 @@ import "@openzeppelin/contracts/math/Math.sol";
 import "@openzeppelin/contracts/cryptography/ECDSA.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-import "hardhat/console.sol";
-
 /**
 @title Chequebook contract without waivers
 @author The Swarm Authors
@@ -73,10 +71,7 @@ contract ERC20SimpleSwap {
   }
 
   // compute the EIP712 domain separator. this cannot be constant because it depends on chainId
-  function domainSeparator(EIP712Domain memory eip712Domain) internal returns (bytes32) {
-    console.log("domainSeparator name", eip712Domain.name);
-    console.log("domainSeparator version", eip712Domain.version);
-    console.log("domainSeparator chainId", eip712Domain.chainId);
+  function domainSeparator(EIP712Domain memory eip712Domain) internal pure returns (bytes32) {
     return keccak256(abi.encode(
         EIP712DOMAIN_TYPEHASH,
         keccak256(bytes(eip712Domain.name)),
@@ -86,20 +81,12 @@ contract ERC20SimpleSwap {
   }
 
   // recover a signature with the EIP712 signing scheme
-  function recoverEIP712(bytes32 hash, bytes memory sig) internal returns (address) {
-    console.log("recoverEIP712 hash");
-    console.logBytes32(hash);
+  function recoverEIP712(bytes32 hash, bytes memory sig) internal pure returns (address) {
     bytes32 digest = keccak256(abi.encodePacked(
         "\x19\x01",
         domainSeparator(domain()),
         hash
     ));
-    console.log("recoverEIP712 digest");
-    console.logBytes32(digest);
-    console.log("recoverEIP712 sig");
-    console.logBytes(sig);
-    console.log("ECDSA recover", ECDSA.recover(digest, sig));
-    // TODO redo and print
     return ECDSA.recover(digest, sig);
   }
 
@@ -158,15 +145,7 @@ contract ERC20SimpleSwap {
     uint callerPayout,
     bytes memory issuerSig
   ) internal {
-
-    //var hash = chequeHash(address(this), beneficiary, cumulativePayout);
-    console.log("_cashChequeInternal");
-    console.log("address this", address(this));
-    console.log("beneficiary", beneficiary);
-    console.log("cumulativePayout", cumulativePayout);
-    // XXX don't work
-    //console.log("issuerSig", issuerSig);
-    //console.log("hash", chequeHash(address(this), beneficiary, cumulativePayout));
+    /* The issuer must have given explicit approval to the cumulativePayout, either by being the caller or by signature*/
     if (msg.sender != issuer) {
       require(issuer == recoverEIP712(chequeHash(address(this), beneficiary, cumulativePayout), issuerSig),
       "SimpleSwap: invalid issuer signature");
