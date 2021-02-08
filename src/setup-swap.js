@@ -48,15 +48,25 @@ async function setupSwap() {
     var aliceSwapBalance = (await erc20contract.balanceOf(aliceSwapAddress)).toNumber();
 
     // Print stuff
-    console.log("ERC20:", erc20.address);
-    console.log("SimpleSwapFactory:", simpleSwapFactory.address);
-    console.log("Alice address:", aliceAddress);
-    console.log("Bob address:", bobAddress);
-    console.log("AliceSwapAddress:", aliceSwapAddress)
-    console.log("BobSwapAddress:", bobSwapAddress)
-    console.log("Alice ERC20 balance:", aliceBalance);
-    console.log("Bob ERC20 balance:", bobBalance);
+    // console.log("ERC20:", erc20.address);
+    // console.log("SimpleSwapFactory:", simpleSwapFactory.address);
+    // console.log("Alice address:", aliceAddress);
+    // console.log("Bob address:", bobAddress);
+    // console.log("AliceSwapAddress:", aliceSwapAddress)
+    // console.log("BobSwapAddress:", bobSwapAddress)
+    // console.log("Alice ERC20 balance:", aliceBalance);
+    // console.log("Bob ERC20 balance:", bobBalance);
     // console.log("Alice Swap balance:", aliceSwapBalance);
+
+    var resp = {
+        erc20: erc20.address,
+        aliceAddress: aliceAddress,
+        bobAddress: bobAddress,
+        aliceSwapAddress: aliceSwapAddress,
+        bobSwapAddress: bobSwapAddress
+    };
+
+    return resp;
 }
 
 module.exports.setupSwap = setupSwap;

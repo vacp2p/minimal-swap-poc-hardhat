@@ -25,10 +25,9 @@ task("balance", "Prints an account's balance")
 
 task("setupSwap", "Setup Swap")
   .setAction(async taskArgs => {
-    await swap.setupSwap();
+    var resp = await swap.setupSwap();
 
-    // TODO Should return JSON
-    console.log("NYI")
+    console.log(JSON.stringify(resp));
     //console.log(web3.utils.fromWei(balance, "ether"), "ETH");
   });
 
