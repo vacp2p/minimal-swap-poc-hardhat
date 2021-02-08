@@ -2,6 +2,8 @@ require("@nomiclabs/hardhat-web3");
 
 require("@nomiclabs/hardhat-waffle");
 
+let swap = require("./src/setup-swap");
+
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
 task("accounts", "Prints the list of accounts", async () => {
@@ -19,6 +21,15 @@ task("balance", "Prints an account's balance")
     const balance = await web3.eth.getBalance(account);
 
     console.log(web3.utils.fromWei(balance, "ether"), "ETH");
+  });
+
+task("setupSwap", "Setup Swap")
+  .setAction(async taskArgs => {
+    await swap.setupSwap();
+
+    // TODO Should return JSON
+    console.log("NYI")
+    //console.log(web3.utils.fromWei(balance, "ether"), "ETH");
   });
 
 // You need to export an object to set up your config
