@@ -29,6 +29,13 @@ task("setupSwap", "Setup Swap")
     console.log(JSON.stringify(resp));
   });
 
+task("signCheque", "Sign cheque")
+  .setAction(async taskArgs => {
+    // TODO Argument, aliceSwapAddress
+    var resp = await swap.signCheque();
+    console.log(JSON.stringify(resp));
+  });
+
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
