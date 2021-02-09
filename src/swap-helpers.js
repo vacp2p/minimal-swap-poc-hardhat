@@ -149,7 +149,7 @@ async function redeemCheque(aliceSwapAddress, issuerSig) {
     var swapContract = new ethers.Contract(aliceSwapAddress, swapArtifact.abi, bobSigner);
 
     var foo = await swapContract.cashChequeBeneficiary(recipient, cumulativePayout, issuerSig);
-    console.log("Resp", foo);
+    //console.log("Resp", foo);
 
     return {resp: foo};
 
