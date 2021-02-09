@@ -84,7 +84,7 @@ async function setupSwap() {
     // console.log("Alice Swap balance:", aliceSwapBalance);
 
     var resp = {
-        erc20: erc20.address,
+        erc20address: erc20.address,
         aliceAddress: aliceAddress,
         bobAddress: bobAddress,
         aliceSwapAddress: aliceSwapAddress,
