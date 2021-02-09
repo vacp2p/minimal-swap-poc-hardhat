@@ -109,7 +109,7 @@ async function signCheque(swapAddress) {
         cumulativePayout: cumulativePayout
     };
 
-    console.log("Cheque", cheque);
+    //console.log("Cheque", cheque);
 
     const types = {
         Cheque: ChequeType
