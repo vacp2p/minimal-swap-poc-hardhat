@@ -1,5 +1,5 @@
 const hre = require("hardhat");
-let swap = require("../src/setup-swap");
+let swap = require("../src/swap-helpers");
 
 async function main() {
     var resp = await swap.setupSwap();
