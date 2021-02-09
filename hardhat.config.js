@@ -36,6 +36,14 @@ task("signCheque", "Sign cheque")
     console.log(JSON.stringify(resp));
   });
 
+task("redeemCheque", "Redeem cheque")
+  .addParam("swapaddress", "Address to Swap Contract (Assumed to belong to Alice)")
+  .addParam("signature", "Cheque signature that can be redeemed")
+  .setAction(async taskArgs => {
+    var resp = await swap.redeemCheque(taskArgs.swapaddress, taskArgs.signature);
+    console.log(JSON.stringify(resp));
+  });
+
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 

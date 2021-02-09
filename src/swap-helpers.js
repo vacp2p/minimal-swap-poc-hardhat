@@ -137,6 +137,28 @@ async function signCheque(swapAddress) {
     return {signer: aliceSigner.adress, signature: signature};
 }
 
+async function redeemCheque(aliceSwapAddress, issuerSig) {
+    var recipient = bobAddress;
+    var cumulativePayout = 500;
+
+    var signers = await ethers.getSigners();
+    var aliceSigner = signers[0];
+    var bobSigner = signers[1];
+
+    var swapArtifact = await artifacts.readArtifact("ERC20SimpleSwap");
+    var swapContract = new ethers.Contract(aliceSwapAddress, swapArtifact.abi, bobSigner);
+
+    var foo = await swapContract.cashChequeBeneficiary(recipient, cumulativePayout, issuerSig);
+    console.log("Resp", foo);
+
+    // Reproduced error here:
+    // ProviderError: VM Exception while processing transaction: revert SimpleSwap: invalid issuer signature
+    // TODO Fix it
+
+    return {resp: foo}
+
+};
 
 module.exports.setupSwap = setupSwap;
 module.exports.signCheque = signCheque;
+module.exports.redeemCheque = redeemCheque;
