@@ -21,7 +21,7 @@ var bobAddress = "0x70997970C51812dc3A010C7d01b50e0d17dc79C8";
 // XXX These change
 // TODO Parameterize
 var erc20address = "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853";
-var aliceSwapAddress = "0x94099942864EA81cCF197E9D71ac53310b1468D8";
+//var aliceSwapAddress = "0x94099942864EA81cCF197E9D71ac53310b1468D8";
 
 async function setupSwap() {
     // Basic setup and definitions
@@ -94,9 +94,8 @@ async function setupSwap() {
     return resp;
 }
 
-// TODO This should be parameterized with arguments, so probably as a task or standalone script?
-async function signCheque() {
-    var swapAddress = aliceSwapAddress;
+async function signCheque(swapAddress) {
+    var aliceSwapAddress = swapAddress;
     var beneficiary = bobAddress;
     var cumulativePayout = 500;
     var chainId = 31337;

@@ -23,6 +23,7 @@ var bobAddress = "0x70997970C51812dc3A010C7d01b50e0d17dc79C8";
 var erc20address = "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853";
 var aliceSwapAddress = "0x94099942864EA81cCF197E9D71ac53310b1468D8";
 
+// XXX Using swap-helpers and task for now, parameterize this etc
 // TODO This should be parameterized with arguments, so probably as a task or standalone script?
 async function main() {
     var swapAddress = aliceSwapAddress;

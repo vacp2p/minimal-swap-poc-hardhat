@@ -30,9 +30,10 @@ task("setupSwap", "Setup Swap")
   });
 
 task("signCheque", "Sign cheque")
+  .addParam("swapaddress", "Address to Swap Contract (Assumed to belong to Alice)")
   .setAction(async taskArgs => {
     // TODO Argument, aliceSwapAddress
-    var resp = await swap.signCheque();
+    var resp = await swap.signCheque(taskArgs.swapaddress);
     console.log(JSON.stringify(resp));
   });
 
