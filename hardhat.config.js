@@ -44,6 +44,13 @@ task("redeemCheque", "Redeem cheque")
     console.log(JSON.stringify(resp));
   });
 
+task("getBalances", "Get ERC20 Balances for Alice and Bob")
+  .addParam("erc20address", "ERC20 Address")
+  .setAction(async taskArgs => {
+    var resp = await swap.getBalances(taskArgs.erc20address);
+    console.log(JSON.stringify(resp));
+  });
+
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
