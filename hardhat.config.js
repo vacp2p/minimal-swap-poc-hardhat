@@ -20,7 +20,9 @@ task("balance", "Prints an account's balance")
     const account = web3.utils.toChecksumAddress(taskArgs.account);
     const balance = await web3.eth.getBalance(account);
 
-    console.log(web3.utils.fromWei(balance, "ether"), "ETH");
+    var bal = web3.utils.fromWei(balance, "ether");
+    var resp = {"balance": bal}; // In ETH
+    console.log(JSON.stringify(resp));
   });
 
 task("setupSwap", "Setup Swap")
